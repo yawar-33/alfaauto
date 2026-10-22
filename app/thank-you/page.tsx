@@ -3,7 +3,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { BIZ } from "@/lib/site";
 
-export const metadata: Metadata = { title: "Booking Request Received", robots: { index: false, follow: true } };
+export const metadata: Metadata = { title: "Booking Request Received", description: "Your booking request has reached Alfa Automotive & Tyre Centre. We will call you during business hours to confirm a time.", robots: { index: false, follow: true } };
 
 export default function ThankYouPage() {
   return (

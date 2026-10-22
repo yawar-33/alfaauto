@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { BIZ } from "@/lib/site";
 
-export const metadata: Metadata = { title: "Terms & Conditions", description: "Website and booking terms for Alfa Automotive & Tyre Centre, Oakleigh South.", alternates: { canonical: "/terms" } };
+export const metadata: Metadata = { title: "Terms & Conditions", description: "Website and online booking terms for Alfa Automotive & Tyre Centre, Oakleigh South. Bookings are confirmed by phone and all repairs are quoted first.", alternates: { canonical: "/terms" }, openGraph: { url: "/terms" } };
 
 // Starter terms. Have the client review them before launch.
 export default function TermsPage() {

@@ -7,7 +7,7 @@ import { BIZ } from "@/lib/site";
 export default function CTASection({ title = "Need Your Car Checked?", text = "Book a service or call us today. We're here to keep you safely on the road." }: { title?: string; text?: string }) {
   return (
     <section aria-labelledby="cta-heading" className="lazy-section relative isolate overflow-hidden bg-ink-950 text-white">
-      <Image src={photos.cardTyres} alt="" fill sizes="100vw" quality={60} placeholder="blur" className="-z-20 object-cover opacity-35" />
+      <Image src={photos.cardTyres} alt="" aria-hidden fill sizes="100vw" quality={60} placeholder="blur" className="-z-20 object-cover opacity-35" />
       <div aria-hidden className="absolute inset-0 -z-10 bg-ink-950/60" />
       <div className="container-x flex flex-col gap-8 py-16 md:flex-row md:items-center md:justify-between md:py-20">
         <div className="reveal">

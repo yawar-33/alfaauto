@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { BIZ } from "@/lib/site";
 
-export const metadata: Metadata = { title: "Privacy Policy", description: "How Alfa Automotive & Tyre Centre collects and uses the details you send through our booking form.", alternates: { canonical: "/privacy-policy" }, robots: { index: true, follow: true } };
+export const metadata: Metadata = { title: "Privacy Policy", description: "How Alfa Automotive & Tyre Centre in Oakleigh South collects, uses and protects the details you send through our online booking form.", alternates: { canonical: "/privacy-policy" }, openGraph: { url: "/privacy-policy" }, robots: { index: true, follow: true } };
 
 // Starter policy. Have the client review it (or use their own) before launch.
 export default function PrivacyPage() {

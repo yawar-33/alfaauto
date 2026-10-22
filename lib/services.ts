@@ -2,6 +2,7 @@ import type { LucideIcon } from "lucide-react";
 import { BatteryCharging, ClipboardCheck, Cpu, Disc3, Gauge, Wrench } from "lucide-react";
 import type { StaticImageData } from "next/image";
 import { photos } from "./photos";
+import { OFFERS_AIRCON, OFFERS_ALIGNMENT } from "./site";
 
 export type Faq = { q: string; a: string };
 
@@ -17,11 +18,13 @@ export interface ServiceCardData {
 
 export const SERVICE_CARDS: ServiceCardData[] = [
   { title: "Roadworthy Certificates", text: "Licensed RWC inspections for selling, re-registering or clearing a defect. Same-day certificate where possible.", href: "/roadworthy-certificate", icon: ClipboardCheck, image: photos.cardRoadworthy, imageAlt: "Mechanic completing a roadworthy inspection checklist beside a car in Oakleigh South" },
-  { title: "Logbook & Car Servicing", text: "Manufacturer-scheduled servicing with quality parts and oils. Your logbook stamped and your new-car warranty kept.", href: "/car-service", icon: Gauge, image: photos.cardLogbook, imageAlt: "Engine bay during a logbook car service" },
-  { title: "Tyres & Wheel Alignment", text: "New tyres in all major brands, wheel balancing, alignment and puncture repairs, fitted while you wait.", href: "/tyres", icon: Disc3, image: photos.cardTyres, imageAlt: "New tyre and alloy wheel fitted after a wheel alignment" },
-  { title: "Brake & Mechanical Repairs", text: "Brakes, steering, suspension, exhaust, engine and transmission work for all makes and models.", href: "/brake-repairs", icon: Wrench, image: photos.cardBrakes, imageAlt: "Brake disc and caliper during a brake repair" },
-  { title: "Diagnostics & Electrical", text: "Computer diagnostics for warning lights, drivability problems and electrical faults on modern vehicles.", href: "/mechanical-repairs#diagnostics", icon: Cpu, image: photos.cardDiagnostics, imageAlt: "Diagnostic scan tool connected in an engine bay" },
-  { title: "Batteries & Cooling", text: "Battery and alternator replacement, radiator and coolant service, and air conditioning repairs.", href: "/car-service#batteries-cooling", icon: BatteryCharging, image: photos.cardBattery, imageAlt: "Car battery being checked under the bonnet" },
+  { title: "Logbook & Car Servicing", text: "Manufacturer-scheduled servicing with quality parts and oils. Your logbook stamped and your new-car warranty kept.", href: "/car-service", icon: Gauge, image: photos.cardLogbook, imageAlt: "Engine bay open during a logbook car service in Oakleigh South" },
+  OFFERS_ALIGNMENT
+    ? { title: "Tyres & Wheel Alignment", text: "New tyres in all major brands, wheel balancing, alignment and puncture repairs, fitted while you wait.", href: "/tyres", icon: Disc3, image: photos.cardTyres, imageAlt: "New tyre and alloy wheel fitted at our Oakleigh South tyre centre" }
+    : { title: "Tyres & Wheels", text: "New tyres in all major brands, wheel balancing and puncture repairs, fitted while you wait.", href: "/tyres", icon: Disc3, image: photos.cardTyres, imageAlt: "New tyre and alloy wheel fitted at our Oakleigh South tyre centre" },
+  { title: "Brake & Mechanical Repairs", text: "Brakes, steering, suspension, exhaust, engine and transmission work for all makes and models.", href: "/brake-repairs", icon: Wrench, image: photos.cardBrakes, imageAlt: "Brake disc and caliper exposed during a brake repair in Oakleigh South" },
+  { title: "Diagnostics & Electrical", text: "Computer diagnostics for warning lights, drivability problems and electrical faults on modern vehicles.", href: "/mechanical-repairs#diagnostics", icon: Cpu, image: photos.cardDiagnostics, imageAlt: "Diagnostic scan tool connected in an engine bay for a warning-light check" },
+  { title: "Batteries & Cooling", text: `Battery and alternator replacement${OFFERS_AIRCON ? ", radiator and coolant service, and air conditioning repairs" : ", plus radiator and coolant service"}.`, href: "/car-service#batteries-cooling", icon: BatteryCharging, image: photos.cardBattery, imageAlt: "Car battery being tested under the bonnet during a service" },
 ];
 
 export const RWC_CHECKS = [
@@ -85,7 +88,7 @@ export const SERVICE_PAGES: ServicePage[] = [
     slug: "car-service",
     name: "Car Servicing",
     metaTitle: "Logbook & Car Servicing Oakleigh South",
-    metaDescription: "Logbook, basic and major car servicing in Oakleigh South that keeps your new-car warranty valid. Transmission, cooling and battery service too. Call 03 9548 9380.",
+    metaDescription: "Logbook, basic and major car servicing in Oakleigh South that keeps your new-car warranty valid. All makes and models. Call 03 9548 9380.",
     eyebrow: "Logbook & car servicing",
     h1: "Logbook & Car Servicing in Oakleigh South",
     lead: "Keep your warranty, your resale history and your car in top shape. We service all makes and models to the manufacturer's schedule and stamp your logbook.",
@@ -95,7 +98,7 @@ export const SERVICE_PAGES: ServicePage[] = [
     bookAs: "Car Service",
     sections: [
       { heading: "Services we offer", bullets: ["Basic service: oil, filter and safety check", "Logbook service to the manufacturer's schedule", "Major service: plugs, fluids, belts and full inspection", "Transmission and differential service", "Engine service and flush"] },
-      { id: "batteries-cooling", heading: "Batteries, cooling & air conditioning", bullets: ["Battery testing and replacement", "Alternator replacement", "Radiator and coolant service", "Air conditioning checks and repairs"] },
+      { id: "batteries-cooling", heading: OFFERS_AIRCON ? "Batteries, cooling & air conditioning" : "Batteries & cooling", bullets: ["Battery testing and replacement", "Alternator replacement", "Radiator and coolant service", ...(OFFERS_AIRCON ? ["Air conditioning checks and repairs"] : [])] },
       { heading: "Book around your week", paragraphs: ["We work Monday to Saturday so you can plan your service when it suits you. Drop the car off after hours if that's easier, and we'll call you when it's ready.", "If we find anything beyond the service, we call you with a quote first. No surprises on the invoice."] },
     ],
     faqs: [
@@ -107,17 +110,17 @@ export const SERVICE_PAGES: ServicePage[] = [
   {
     slug: "tyres",
     name: "Tyres & Wheels",
-    metaTitle: "Tyres, Wheel Alignment & Puncture Repair Oakleigh South",
-    metaDescription: "New tyres in all brands for all makes and models, wheel balancing, alignment and puncture repairs in Oakleigh South. Call 03 9548 9380 for a tyre quote.",
+    metaTitle: OFFERS_ALIGNMENT ? "Tyres, Wheel Alignment & Puncture Repair Oakleigh South" : "Tyres, Wheel Balancing & Puncture Repair Oakleigh South",
+    metaDescription: `New tyres in all brands for all makes and models, wheel balancing, ${OFFERS_ALIGNMENT ? "alignment " : ""}and puncture repairs in Oakleigh South. Call 03 9548 9380 for a tyre quote.`,
     eyebrow: "Tyres & wheels",
-    h1: "Tyres & Wheel Alignment in Oakleigh South",
-    lead: "New tyres in all major brands for every make and model, fitted, balanced and aligned in our Oakleigh South workshop. Flat tyre? We repair punctures too.",
+    h1: OFFERS_ALIGNMENT ? "Tyres & Wheel Alignment in Oakleigh South" : "Tyres & Wheels in Oakleigh South",
+    lead: `New tyres in all major brands for every make and model, fitted, balanced${OFFERS_ALIGNMENT ? " and aligned" : ""} in our Oakleigh South workshop. Flat tyre? We repair punctures too.`,
     image: photos.cardTyres,
     imageAlt: "New tyre and alloy wheel at Alfa Automotive & Tyre Centre, Oakleigh South",
     highlights: ["All brands and sizes", "Fitted while you wait", "Balancing & puncture repairs"],
     bookAs: "Tyres",
     sections: [
-      { heading: "Tyre services", bullets: ["New tyres, all brands and sizes", "Fitting and wheel balancing", "Wheel alignment", "Puncture repairs", "Tyre checks for roadworthy certificates"] },
+      { heading: "Tyre services", bullets: ["New tyres, all brands and sizes", "Fitting and wheel balancing", ...(OFFERS_ALIGNMENT ? ["Wheel alignment"] : []), "Puncture repairs", "Tyre checks for roadworthy certificates"] },
       { heading: "Signs you need new tyres", bullets: ["Tread at or near the wear indicator bars", "Cracks, bulges or cuts in the sidewall", "Vibration through the steering wheel at speed", "Uneven wear on one edge, often an alignment or suspension sign"] },
       { heading: "How to read your tyre size", paragraphs: ["Your size is printed on the sidewall, for example 205/55 R16 91V: 205 mm wide, sidewall 55% of the width, radial for a 16-inch rim, load index 91 (615 kg) and speed rating V (240 km/h). Call us with it for a quote."] },
     ],
@@ -130,7 +133,7 @@ export const SERVICE_PAGES: ServicePage[] = [
     slug: "mechanical-repairs",
     name: "Mechanical Repairs",
     metaTitle: "Car Repairs, Brakes & Diagnostics Oakleigh South",
-    metaDescription: "Brake repairs, diagnostics, electrical, suspension, engine, welding and rust repairs plus pre-purchase inspections in Oakleigh South. All makes and models. Call 03 9548 9380.",
+    metaDescription: "Car repairs in Oakleigh South: brakes, diagnostics, electrical, suspension, engine and exhaust work for all makes and models. Call 03 9548 9380.",
     eyebrow: "Mechanical repairs",
     h1: "Car Repairs & Brake Repairs in Oakleigh South",
     lead: "From a squealing brake to a warning light you can't figure out, our qualified mechanics diagnose it properly and fix it right.",

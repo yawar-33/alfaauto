@@ -11,10 +11,11 @@ import TrustBar from "@/components/TrustBar";
 import WhyChooseUs from "@/components/WhyChooseUs";
 import { faqSchema } from "@/lib/schema";
 import { HOME_FAQS } from "@/lib/services";
+import { SITE_URL } from "@/lib/site";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/" },
-  openGraph: { url: "/", title: "Roadworthy Certificates & Car Servicing Oakleigh South | Alfa Auto" },
+  openGraph: { url: SITE_URL, title: "Roadworthy Certificates & Car Servicing Oakleigh South | Alfa Auto" },
 };
 
 export default function HomePage() {

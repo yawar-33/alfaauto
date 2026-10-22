@@ -12,13 +12,14 @@ import { BIZ, SITE_URL } from "@/lib/site";
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: { default: "Roadworthy Certificates & Car Servicing Oakleigh South | Alfa Auto", template: "%s | Alfa Auto" },
-  description: "Alfa Automotive & Tyre Centre provides roadworthy certificates, car servicing, tyres and mechanical repairs in Oakleigh South. 25+ years of experience. Call 03 9548 9380.",
+  description: "Roadworthy certificates, car servicing, tyres and repairs in Oakleigh South. 25+ years' experience. Call 03 9548 9380.",
   applicationName: BIZ.name,
   openGraph: { type: "website", siteName: BIZ.name, locale: "en_AU" },
   twitter: { card: "summary_large_image" },
   robots: { index: true, follow: true, googleBot: { index: true, follow: true, "max-image-preview": "large", "max-snippet": -1 } },
   other: { "geo.region": "AU-VIC", "geo.placename": BIZ.suburb },
-  // verification: { google: "PASTE_SEARCH_CONSOLE_TOKEN" },
+  // Search Console tag is only output when GOOGLE_SITE_VERIFICATION is set
+  ...(process.env.GOOGLE_SITE_VERIFICATION ? { verification: { google: process.env.GOOGLE_SITE_VERIFICATION } } : {}),
 };
 
 export const viewport: Viewport = { width: "device-width", initialScale: 1, viewportFit: "cover", themeColor: "#0c1320" };

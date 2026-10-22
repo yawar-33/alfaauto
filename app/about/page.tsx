@@ -26,7 +26,7 @@ export default function AboutPage() {
   return (
     <>
       <JsonLd data={breadcrumbSchema([{ name: "About", path: "/about" }])} />
-      <PageHero eyebrow="About Alfa Auto" title="Your Local Automotive Workshop in Oakleigh South" crumb="About" image={photos.storefront} imageAlt="Alfa Automotive & Tyre Centre, 24 Coora Rd Oakleigh South"
+      <PageHero eyebrow="About Alfa Auto" title="Your Local Automotive Workshop in Oakleigh South" crumb="About" image={photos.storefront} imageAlt="Shopfront of Alfa Automotive & Tyre Centre at 24 Coora Rd, Oakleigh South"
         lead="A team of qualified mechanics with over 25 years of experience across Australia and New Zealand, looking after drivers across Melbourne's south-east." />
       <section className="section bg-white">
         <div className="container-x grid gap-12 lg:grid-cols-2 lg:items-center lg:gap-16">
@@ -39,7 +39,7 @@ export default function AboutPage() {
             </ul>
           </div>
           <div className="reveal relative aspect-[4/3] overflow-hidden rounded-[var(--radius-card)]">
-            <Image src={photos.lounge} alt="Customer waiting lounge at Alfa Automotive & Tyre Centre" fill placeholder="blur" sizes="(min-width:1024px) 560px, 100vw" className="object-cover" />
+            <Image src={photos.lounge} alt="Customer waiting lounge inside Alfa Automotive & Tyre Centre, Oakleigh South" fill placeholder="blur" sizes="(min-width:1024px) 560px, 100vw" className="object-cover" />
           </div>
         </div>
       </section>

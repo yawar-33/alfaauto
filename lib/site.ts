@@ -1,6 +1,12 @@
 // Single source of truth for business details (NAP). Keep identical to the Google Business Profile.
 export const SITE_URL = (process.env.NEXT_PUBLIC_SITE_URL ?? "https://alfaauto.com.au").replace(/\/$/, "");
 
+function readGeo(): { lat: number; lng: number } | null {
+  const lat = Number.parseFloat(process.env.NEXT_PUBLIC_GEO_LAT ?? "");
+  const lng = Number.parseFloat(process.env.NEXT_PUBLIC_GEO_LNG ?? "");
+  return Number.isFinite(lat) && Number.isFinite(lng) ? { lat, lng } : null;
+}
+
 export const BIZ = {
   name: "Alfa Automotive & Tyre Centre",
   shortName: "Alfa Auto",
@@ -12,9 +18,16 @@ export const BIZ = {
   postcode: "3167",
   mapsUrl: "https://www.google.com/maps/search/?api=1&query=Alfa+Automotive+%26+Tyre+Centre+24+Coora+Rd+Oakleigh+South+VIC+3167",
   mapsEmbed: "https://www.google.com/maps?q=24+Coora+Rd,+Oakleigh+South+VIC+3167&z=15&output=embed",
-  // TODO: add exact coordinates from Google Maps for stronger local schema
-  geo: null as null | { lat: number; lng: number },
+  // Set NEXT_PUBLIC_GEO_LAT / NEXT_PUBLIC_GEO_LNG (from Google Maps) to add coordinates to the local schema
+  geo: readGeo(),
 } as const;
+
+/**
+ * Services that are mentioned in page copy and schema only when offered.
+ * CONFIRM WITH THE CLIENT BEFORE LAUNCH that they do wheel alignments and air conditioning work.
+ */
+export const OFFERS_ALIGNMENT = true;
+export const OFFERS_AIRCON = true;
 
 export const ADDRESS = `${BIZ.street}, ${BIZ.suburb} ${BIZ.state} ${BIZ.postcode}`;
 

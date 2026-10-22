@@ -8,7 +8,7 @@ export default function RoadworthySection() {
   return (
     <section aria-labelledby="rwc-heading" className="lazy-section grid bg-steel-50 lg:grid-cols-2">
       <div className="relative min-h-[320px] lg:min-h-[640px]">
-        <Image src={photos.rwcInspection} alt="Mechanic inspecting a wheel and tyre during a roadworthy inspection" fill placeholder="blur" quality={75}
+        <Image src={photos.rwcInspection} alt="Mechanic inspecting a wheel and tyre during a roadworthy inspection in Oakleigh South" fill placeholder="blur" quality={75}
           sizes="(min-width:1024px) 50vw, 100vw" className="object-cover object-[40%_center]" />
         <div className="absolute bottom-0 left-0 bg-gold-500 px-6 py-4 text-ink-900">
           <p className="text-3xl font-black leading-none">Same day</p>

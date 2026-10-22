@@ -7,6 +7,9 @@ type Booking = {
   service?: string; date?: string; message?: string; company?: string;
 };
 
+// BookingForm appends "Please call 03 9548 9380 and we'll book you in." to this message.
+const UNAVAILABLE = "Online booking is temporarily unavailable.";
+
 const clean = (v: unknown, max = 200) => (typeof v === "string" ? v.trim().slice(0, max) : "");
 const esc = (s: string) => s.replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" })[c]!);
 
@@ -29,11 +32,13 @@ export async function POST(req: Request) {
   }
 
   const { RESEND_API_KEY, BOOKING_TO_EMAIL, BOOKING_FROM_EMAIL } = process.env;
+  const missing = Object.entries({ RESEND_API_KEY, BOOKING_TO_EMAIL, BOOKING_FROM_EMAIL }).filter(([, v]) => !v).map(([k]) => k);
+  if (missing.length) console.error(`[booking] missing env var ${missing.join(", ")}. Set it in Netlify > Site configuration > Environment variables.`);
   if (!RESEND_API_KEY || !BOOKING_TO_EMAIL) {
-    console.warn("[booking] email not configured; booking received:", b);
+    console.error("[booking] email not configured; booking received:", b);
     // In development, accept so the flow can be tested. In production, fail loudly so no booking is silently lost.
     return process.env.NODE_ENV === "production"
-      ? NextResponse.json({ error: "Online booking is temporarily unavailable." }, { status: 503 })
+      ? NextResponse.json({ error: UNAVAILABLE }, { status: 503 })
       : NextResponse.json({ ok: true, delivered: false });
   }
 

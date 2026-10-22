@@ -1,4 +1,4 @@
-import { AREAS, BIZ, SITE_URL, SOCIAL } from "./site";
+import { AREAS, BIZ, OFFERS_AIRCON, OFFERS_ALIGNMENT, SITE_URL, SOCIAL } from "./site";
 import type { Faq, ServicePage } from "./services";
 
 const BUSINESS_ID = `${SITE_URL}/#business`;
@@ -10,8 +10,9 @@ export function businessSchema() {
     "@id": BUSINESS_ID,
     name: BIZ.name,
     alternateName: BIZ.shortName,
-    url: `${SITE_URL}/`,
+    url: SITE_URL,
     telephone: BIZ.tel,
+    hasMap: BIZ.mapsUrl,
     image: `${SITE_URL}/opengraph-image`,
     priceRange: "$$",
     description:
@@ -32,7 +33,12 @@ export function businessSchema() {
     areaServed: AREAS.map((a) => ({ "@type": "Place", name: `${a} VIC` })),
     memberOf: { "@type": "Organization", name: "Victorian Automotive Chamber of Commerce (VACC)" },
     sameAs: [SOCIAL.facebook, SOCIAL.instagram, SOCIAL.google].filter(Boolean),
-    knowsAbout: ["Roadworthy certificates", "Logbook servicing", "Tyres", "Wheel alignment", "Brake repairs", "Vehicle diagnostics", "Pre-purchase inspections"],
+    knowsAbout: [
+      "Roadworthy certificates", "Logbook servicing", "Tyres",
+      ...(OFFERS_ALIGNMENT ? ["Wheel alignment"] : []),
+      ...(OFFERS_AIRCON ? ["Air conditioning"] : []),
+      "Brake repairs", "Vehicle diagnostics", "Pre-purchase inspections", "Welding and rust repairs",
+    ],
   };
 }
 
@@ -57,7 +63,7 @@ export function breadcrumbSchema(items: { name: string; path: string }[]) {
       "@type": "ListItem",
       position: i + 1,
       name: it.name,
-      item: `${SITE_URL}${it.path === "/" ? "/" : it.path}`,
+      item: it.path === "/" ? SITE_URL : `${SITE_URL}${it.path}`,
     })),
   };
 }

@@ -38,7 +38,7 @@ export default function WhyChooseUs() {
             </div>
           </div>
           <div className="reveal relative aspect-[16/10] overflow-hidden rounded-[var(--radius-card)] lg:aspect-[4/3]">
-            <Image src={photos.workshopTeam} alt="Cars on hoists inside the Alfa Auto workshop" fill placeholder="blur" quality={75}
+            <Image src={photos.workshopTeam} alt="Cars on hoists inside the Alfa Auto mechanical workshop in Oakleigh South" fill placeholder="blur" quality={75}
               sizes="(min-width:1024px) 440px, 100vw" className="object-cover" />
           </div>
           <ul className="reveal grid gap-4">

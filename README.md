@@ -76,20 +76,22 @@ Add a service page by adding an entry to `SERVICE_PAGES` in `lib/services.ts`. T
 - [ ] **Links and tokens:**
   - Google Business Profile link in `SOCIAL.google` (shows the G icon and makes the rating badge clickable)
   - Instagram, if they have it
-  - `BIZ.geo` coordinates
-  - Search Console token in `app/layout.tsx`
+  - Coordinates: set `NEXT_PUBLIC_GEO_LAT` / `NEXT_PUBLIC_GEO_LNG` (geo schema appears only when both are set)
+  - Search Console: set `GOOGLE_SITE_VERIFICATION` in Netlify env vars
+- [ ] `OFFERS_ALIGNMENT` / `OFFERS_AIRCON` in `lib/site.ts`: confirm the workshop does wheel alignments and air conditioning
 - [ ] Review the starter Privacy Policy and Terms pages.
 - [ ] Replace the text logo in `components/Logo.tsx` with an SVG of the final logo if wanted.
 
-## Deploy (Vercel)
+## Deploy (Netlify)
 
-1. Push to GitHub, then import the repo in Vercel. The framework is detected automatically.
+1. Push to GitHub, then import the repo in Netlify. `netlify.toml` sets the build; Netlify's Next.js runtime is applied automatically.
 2. Environment variables:
    - `NEXT_PUBLIC_SITE_URL=https://alfaauto.com.au`
    - `RESEND_API_KEY`
    - `BOOKING_TO_EMAIL`
    - `BOOKING_FROM_EMAIL` (verify the domain in Resend)
-3. Add the domain `alfaauto.com.au` and redirect `www` to it.
+   - `GOOGLE_SITE_VERIFICATION`, `NEXT_PUBLIC_GEO_LAT`, `NEXT_PUBLIC_GEO_LNG` (optional)
+3. Add the domain `alfaauto.com.au` and redirect `www` to it. `proxy.ts` sends `X-Robots-Tag: noindex` on the `*.netlify.app` address.
 
 Without email settings, the live form returns "temporarily unavailable" rather than silently losing bookings.
 
