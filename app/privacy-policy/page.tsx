@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import PhoneText from "@/components/PhoneText";
 import { BIZ } from "@/lib/site";
 
 export const metadata: Metadata = { title: "Privacy Policy", description: "How Alfa Automotive & Tyre Centre in Oakleigh South collects, uses and protects the details you send through our online booking form.", alternates: { canonical: "/privacy-policy" }, openGraph: { url: "/privacy-policy" }, robots: { index: true, follow: true } };
@@ -15,7 +16,7 @@ export default function PrivacyPage() {
         <h2>How we use it</h2>
         <p>We use your details only to contact you about your booking and your vehicle. We do not sell or share your information with third parties for marketing.</p>
         <h2>Contact</h2>
-        <p>To access or correct your information, call {BIZ.phone} or visit us at {BIZ.street}, {BIZ.suburb} {BIZ.state} {BIZ.postcode}.</p>
+        <p><PhoneText text={`To access or correct your information, call ${BIZ.phone}`} /> or visit us at {BIZ.street}, {BIZ.suburb} {BIZ.state} {BIZ.postcode}.</p>
       </div>
     </article>
   );

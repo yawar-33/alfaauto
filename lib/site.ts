@@ -23,10 +23,9 @@ export const BIZ = {
 } as const;
 
 /**
- * Services that are mentioned in page copy and schema only when offered.
- * CONFIRM WITH THE CLIENT BEFORE LAUNCH that they do wheel alignments and air conditioning work.
+ * Air conditioning is mentioned in page copy and schema only when offered.
+ * CONFIRM WITH THE CLIENT BEFORE LAUNCH that they do air conditioning work.
  */
-export const OFFERS_ALIGNMENT = true;
 export const OFFERS_AIRCON = true;
 
 export const ADDRESS = `${BIZ.street}, ${BIZ.suburb} ${BIZ.state} ${BIZ.postcode}`;

@@ -1,4 +1,4 @@
-import { AREAS, BIZ, OFFERS_AIRCON, OFFERS_ALIGNMENT, SITE_URL, SOCIAL } from "./site";
+import { AREAS, BIZ, OFFERS_AIRCON, SITE_URL, SOCIAL } from "./site";
 import type { Faq, ServicePage } from "./services";
 
 const BUSINESS_ID = `${SITE_URL}/#business`;
@@ -35,7 +35,7 @@ export function businessSchema() {
     sameAs: [SOCIAL.facebook, SOCIAL.instagram, SOCIAL.google].filter(Boolean),
     knowsAbout: [
       "Roadworthy certificates", "Logbook servicing", "Tyres",
-      ...(OFFERS_ALIGNMENT ? ["Wheel alignment"] : []),
+      "Wheel balancing",
       ...(OFFERS_AIRCON ? ["Air conditioning"] : []),
       "Brake repairs", "Vehicle diagnostics", "Pre-purchase inspections", "Welding and rust repairs",
     ],

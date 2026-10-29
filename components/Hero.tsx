@@ -1,10 +1,8 @@
-import { ArrowRight, CircleCheck, MapPin, Phone } from "lucide-react";
+import { ArrowRight, MapPin, Phone } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
-import { BIZ, TRUST } from "@/lib/site";
+import { BIZ } from "@/lib/site";
 import { photos } from "@/lib/photos";
-
-const POINTS = [`${TRUST.years} Years Experience`, "All Makes & Models", "Same-Day RWC", "24hr Emergency Towing"];
 
 export default function Hero() {
   return (
@@ -26,11 +24,6 @@ export default function Hero() {
           <Link href="/contact#book" className="btn btn-primary text-base">Book a Service<ArrowRight aria-hidden className="size-5" /></Link>
           <a href={`tel:${BIZ.tel}`} className="btn btn-outline-light text-base"><Phone aria-hidden className="size-5" />Call {BIZ.phone}</a>
         </div>
-        <ul className="grid max-w-3xl grid-cols-2 gap-x-6 gap-y-3 pt-2 text-[0.95rem] font-semibold text-steel-100 sm:flex sm:flex-wrap">
-          {POINTS.map((p) => (
-            <li key={p} className="inline-flex items-center gap-2"><CircleCheck aria-hidden className="size-5 shrink-0 text-gold-400" />{p}</li>
-          ))}
-        </ul>
       </div>
     </section>
   );

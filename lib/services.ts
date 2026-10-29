@@ -2,7 +2,7 @@ import type { LucideIcon } from "lucide-react";
 import { BatteryCharging, ClipboardCheck, Cpu, Disc3, Gauge, Wrench } from "lucide-react";
 import type { StaticImageData } from "next/image";
 import { photos } from "./photos";
-import { OFFERS_AIRCON, OFFERS_ALIGNMENT } from "./site";
+import { OFFERS_AIRCON } from "./site";
 
 export type Faq = { q: string; a: string };
 
@@ -19,9 +19,7 @@ export interface ServiceCardData {
 export const SERVICE_CARDS: ServiceCardData[] = [
   { title: "Roadworthy Certificates", text: "Licensed RWC inspections for selling, re-registering or clearing a defect. Same-day certificate where possible.", href: "/roadworthy-certificate", icon: ClipboardCheck, image: photos.cardRoadworthy, imageAlt: "Mechanic completing a roadworthy inspection checklist beside a car in Oakleigh South" },
   { title: "Logbook & Car Servicing", text: "Manufacturer-scheduled servicing with quality parts and oils. Your logbook stamped and your new-car warranty kept.", href: "/car-service", icon: Gauge, image: photos.cardLogbook, imageAlt: "Engine bay open during a logbook car service in Oakleigh South" },
-  OFFERS_ALIGNMENT
-    ? { title: "Tyres & Wheel Alignment", text: "New tyres in all major brands, wheel balancing, alignment and puncture repairs, fitted while you wait.", href: "/tyres", icon: Disc3, image: photos.cardTyres, imageAlt: "New tyre and alloy wheel fitted at our Oakleigh South tyre centre" }
-    : { title: "Tyres & Wheels", text: "New tyres in all major brands, wheel balancing and puncture repairs, fitted while you wait.", href: "/tyres", icon: Disc3, image: photos.cardTyres, imageAlt: "New tyre and alloy wheel fitted at our Oakleigh South tyre centre" },
+  { title: "Tyres & Wheel Balancing", text: "New tyres in all major brands, wheel balancing and puncture repairs, fitted while you wait.", href: "/tyres", icon: Disc3, image: photos.cardTyres, imageAlt: "New tyre and alloy wheel fitted and balanced" },
   { title: "Brake & Mechanical Repairs", text: "Brakes, steering, suspension, exhaust, engine and transmission work for all makes and models.", href: "/brake-repairs", icon: Wrench, image: photos.cardBrakes, imageAlt: "Brake disc and caliper exposed during a brake repair in Oakleigh South" },
   { title: "Diagnostics & Electrical", text: "Computer diagnostics for warning lights, drivability problems and electrical faults on modern vehicles.", href: "/mechanical-repairs#diagnostics", icon: Cpu, image: photos.cardDiagnostics, imageAlt: "Diagnostic scan tool connected in an engine bay for a warning-light check" },
   { title: "Batteries & Cooling", text: `Battery and alternator replacement${OFFERS_AIRCON ? ", radiator and coolant service, and air conditioning repairs" : ", plus radiator and coolant service"}.`, href: "/car-service#batteries-cooling", icon: BatteryCharging, image: photos.cardBattery, imageAlt: "Car battery being tested under the bonnet during a service" },
@@ -69,7 +67,7 @@ export const SERVICE_PAGES: ServicePage[] = [
     lead: "Selling your car, re-registering it or clearing a defect notice? Book a roadworthy inspection and, if it passes, leave with your certificate the same day.",
     image: photos.rwcInspection,
     imageAlt: "Mechanic inspecting a wheel and tyre during a roadworthy inspection",
-    highlights: ["Same-day RWC where possible", "Repairs quoted before work starts", "Re-inspection within 7 days"],
+    highlights: ["Same-day RWC where possible", "Repairs quoted before work starts", "Re-inspection within 14 days"],
     showChecklist: true,
     bookAs: "Roadworthy Certificate",
     sections: [
@@ -80,7 +78,7 @@ export const SERVICE_PAGES: ServicePage[] = [
     faqs: [
       { q: "How long is a roadworthy certificate valid?", a: "For selling a vehicle or transferring registration, an RWC is valid for 30 days from the date it is issued." },
       { q: "How long does a roadworthy inspection take?", a: "Most passenger car inspections take about an hour. If the car passes, you leave with the certificate the same day." },
-      { q: "What happens if my car fails?", a: "You get a written list of what needs fixing and a quote. Have us do the repairs, or take it elsewhere, and bring it back within 7 days for a re-check of the failed items." },
+      { q: "What happens if my car fails?", a: "You get a written list of what needs fixing and a quote. Have us do the repairs, or take it elsewhere, and bring it back within 14 days for a re-check of the failed items." },
       { q: "Is a roadworthy the same as a pre-purchase inspection?", a: "No. A roadworthy checks the minimum safety standard. A pre-purchase inspection is a broader check of condition, engine health and likely upcoming costs." },
     ],
   },
@@ -102,7 +100,7 @@ export const SERVICE_PAGES: ServicePage[] = [
       { heading: "Book around your week", paragraphs: ["We work Monday to Saturday so you can plan your service when it suits you. Drop the car off after hours if that's easier, and we'll call you when it's ready.", "If we find anything beyond the service, we call you with a quote first. No surprises on the invoice."] },
     ],
     faqs: [
-      { q: "How often should I service my car?", a: "Follow your logbook. Most modern cars need a service every 10,000 to 15,000 km or every 12 months, whichever comes first." },
+      { q: "How often should I service my car?", a: "We recommend a service every 6 months. Your logbook also lists a kilometre interval, so book in at whichever comes first." },
       { q: "Will servicing with you void my new-car warranty?", a: "No. Under Australian Consumer Law any qualified mechanic can service your car, as long as it follows the logbook schedule with suitable parts and oils. We stamp your logbook every time." },
       { q: "What is the difference between a basic and a logbook service?", a: "A basic service covers oil, filter and safety checks. A logbook service follows the manufacturer's schedule for your kilometres, which can include spark plugs, fluids and belts." },
     ],
@@ -110,18 +108,18 @@ export const SERVICE_PAGES: ServicePage[] = [
   {
     slug: "tyres",
     name: "Tyres & Wheels",
-    metaTitle: OFFERS_ALIGNMENT ? "Tyres, Wheel Alignment & Puncture Repair Oakleigh South" : "Tyres, Wheel Balancing & Puncture Repair Oakleigh South",
-    metaDescription: `New tyres in all brands for all makes and models, wheel balancing, ${OFFERS_ALIGNMENT ? "alignment " : ""}and puncture repairs in Oakleigh South. Call 03 9548 9380 for a tyre quote.`,
+    metaTitle: "Tyres, Wheel Balancing & Puncture Repair Oakleigh South",
+    metaDescription: "New tyres in all brands for all makes and models, wheel balancing and puncture repairs in Oakleigh South. Call 03 9548 9380 for a tyre quote.",
     eyebrow: "Tyres & wheels",
-    h1: OFFERS_ALIGNMENT ? "Tyres & Wheel Alignment in Oakleigh South" : "Tyres & Wheels in Oakleigh South",
-    lead: `New tyres in all major brands for every make and model, fitted, balanced${OFFERS_ALIGNMENT ? " and aligned" : ""} in our Oakleigh South workshop. Flat tyre? We repair punctures too.`,
+    h1: "Tyres & Wheel Balancing in Oakleigh South",
+    lead: "New tyres in all major brands for every make and model, fitted and balanced in our Oakleigh South workshop. Flat tyre? We repair punctures too.",
     image: photos.cardTyres,
     imageAlt: "New tyre and alloy wheel at Alfa Automotive & Tyre Centre, Oakleigh South",
     highlights: ["All brands and sizes", "Fitted while you wait", "Balancing & puncture repairs"],
     bookAs: "Tyres",
     sections: [
-      { heading: "Tyre services", bullets: ["New tyres, all brands and sizes", "Fitting and wheel balancing", ...(OFFERS_ALIGNMENT ? ["Wheel alignment"] : []), "Puncture repairs", "Tyre checks for roadworthy certificates"] },
-      { heading: "Signs you need new tyres", bullets: ["Tread at or near the wear indicator bars", "Cracks, bulges or cuts in the sidewall", "Vibration through the steering wheel at speed", "Uneven wear on one edge, often an alignment or suspension sign"] },
+      { heading: "Tyre services", bullets: ["New tyres, all brands and sizes", "Fitting and wheel balancing", "Puncture repairs", "Tyre checks for roadworthy certificates"] },
+      { heading: "Signs you need new tyres", bullets: ["Tread at or near the wear indicator bars", "Cracks, bulges or cuts in the sidewall", "Vibration through the steering wheel at speed", "Uneven wear on one edge, often a sign of a suspension or steering problem"] },
       { heading: "How to read your tyre size", paragraphs: ["Your size is printed on the sidewall, for example 205/55 R16 91V: 205 mm wide, sidewall 55% of the width, radial for a 16-inch rim, load index 91 (615 kg) and speed rating V (240 km/h). Call us with it for a quote."] },
     ],
     faqs: [

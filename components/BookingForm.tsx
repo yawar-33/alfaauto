@@ -4,6 +4,7 @@ import { useRouter } from "next/navigation";
 import { useId, useState, type FormEvent } from "react";
 import { BIZ } from "@/lib/site";
 import { SERVICE_OPTIONS } from "@/lib/services";
+import PhoneText from "./PhoneText";
 
 interface FieldProps { label: string; name: string; type?: string; required?: boolean; autoComplete?: string; placeholder?: string; inputMode?: "tel" | "email" | "text"; maxLength?: number; pattern?: string }
 
@@ -47,9 +48,7 @@ export default function BookingForm({ defaultService }: { defaultService?: strin
       <div className="grid gap-5 sm:grid-cols-2">
         <Field label="Name" name="name" required autoComplete="name" maxLength={80} />
         <Field label="Mobile" name="phone" type="tel" inputMode="tel" required autoComplete="tel" pattern="[0-9 +()\-]{8,20}" placeholder="04xx xxx xxx" />
-        <Field label="Email" name="email" type="email" inputMode="email" autoComplete="email" maxLength={120} />
         <Field label="Car make & model" name="vehicle" placeholder="e.g. Toyota Corolla 2018" maxLength={80} />
-        <Field label="Registration" name="rego" maxLength={10} placeholder="ABC123" />
         <div>
           <label htmlFor={ids.svc} className="field-label">Service required<span className="text-gold-600"> *</span></label>
           <select id={ids.svc} name="service" required defaultValue={defaultService ?? SERVICE_OPTIONS[0]} className="field">
@@ -62,7 +61,7 @@ export default function BookingForm({ defaultService }: { defaultService?: strin
         </div>
         <div className="sm:col-span-2">
           <label htmlFor={ids.msg} className="field-label">Message</label>
-          <textarea id={ids.msg} name="message" rows={4} maxLength={1000} className="field resize-y" placeholder="Warning lights, noises, or when you need your RWC by" />
+          <textarea id={ids.msg} name="message" rows={3} maxLength={1000} className="field resize-y" placeholder="Warning lights, noises, or when you need your RWC by" />
         </div>
       </div>
       <button type="submit" disabled={state === "sending"} className="btn btn-primary w-full text-base disabled:opacity-70">
@@ -70,7 +69,7 @@ export default function BookingForm({ defaultService }: { defaultService?: strin
       </button>
       {state === "error" && (
         <p role="alert" className="rounded-[var(--radius-card)] border border-red-200 bg-red-50 px-4 py-3 text-sm font-semibold text-red-800">
-          {error || "We couldn't send your request."} Please call {BIZ.phone} and we&apos;ll book you in.
+          <PhoneText text={`${error || "We couldn't send your request."} Please call ${BIZ.phone} and we'll book you in.`} />
         </p>
       )}
       <p className="text-center text-sm text-steel-500">We&apos;ll contact you during business hours to confirm your booking.</p>

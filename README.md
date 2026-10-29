@@ -78,7 +78,7 @@ Add a service page by adding an entry to `SERVICE_PAGES` in `lib/services.ts`. T
   - Instagram, if they have it
   - Coordinates: set `NEXT_PUBLIC_GEO_LAT` / `NEXT_PUBLIC_GEO_LNG` (geo schema appears only when both are set)
   - Search Console: set `GOOGLE_SITE_VERIFICATION` in Netlify env vars
-- [ ] `OFFERS_ALIGNMENT` / `OFFERS_AIRCON` in `lib/site.ts`: confirm the workshop does wheel alignments and air conditioning
+- [ ] `OFFERS_AIRCON` in `lib/site.ts`: confirm the workshop does air conditioning work
 - [ ] Review the starter Privacy Policy and Terms pages.
 - [ ] Replace the text logo in `components/Logo.tsx` with an SVG of the final logo if wanted.
 

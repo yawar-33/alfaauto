@@ -1,13 +1,13 @@
 import { Clock, MapPin, Phone } from "lucide-react";
 import Link from "next/link";
-import { BIZ, HOURS_SUMMARY, NAV, OFFERS_ALIGNMENT } from "@/lib/site";
+import { BIZ, HOURS_SUMMARY, NAV } from "@/lib/site";
 import Logo from "./Logo";
 import SocialIcons from "./SocialIcons";
 
 const SERVICES = [
   { href: "/roadworthy-certificate", label: "Roadworthy Certificates" },
   { href: "/car-service", label: "Logbook Servicing" },
-  { href: "/tyres", label: OFFERS_ALIGNMENT ? "Tyres & Wheel Alignment" : "Tyres & Wheels" },
+  { href: "/tyres", label: "Tyres & Wheel Balancing" },
   { href: "/mechanical-repairs", label: "Mechanical Repairs" },
   { href: "/mechanical-repairs#diagnostics", label: "Diagnostics" },
   { href: "/brake-repairs", label: "Brake Repairs" },

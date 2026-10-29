@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import PhoneText from "@/components/PhoneText";
 import { BIZ } from "@/lib/site";
 
 export const metadata: Metadata = { title: "Terms & Conditions", description: "Website and online booking terms for Alfa Automotive & Tyre Centre, Oakleigh South. Bookings are confirmed by phone and all repairs are quoted first.", alternates: { canonical: "/terms" }, openGraph: { url: "/terms" } };
@@ -13,7 +14,7 @@ export default function TermsPage() {
         <h2>Bookings</h2>
         <p>A booking request is not confirmed until we call or message you with a time. All repair work is quoted and approved by you before it starts.</p>
         <h2>Contact</h2>
-        <p>Questions? Call {BIZ.phone}.</p>
+        <p><PhoneText text={`Questions? Call ${BIZ.phone}.`} /></p>
       </div>
     </article>
   );

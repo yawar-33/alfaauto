@@ -1,5 +1,6 @@
 import { ChevronDown } from "lucide-react";
 import type { Faq } from "@/lib/services";
+import PhoneText from "./PhoneText";
 
 /** Native <details> accordion: works without JS and every answer is in the HTML for Google. */
 export default function FaqSection({ items, title = "Common Questions", eyebrow = "FAQ" }: { items: Faq[]; title?: string; eyebrow?: string }) {
@@ -16,7 +17,7 @@ export default function FaqSection({ items, title = "Common Questions", eyebrow 
               <summary className="flex cursor-pointer items-center justify-between gap-6 py-5 text-lg font-bold transition hover:text-gold-600">
                 {f.q}<ChevronDown aria-hidden className="size-5 shrink-0 transition group-open:rotate-180" />
               </summary>
-              <p className="max-w-[65ch] pb-6 leading-relaxed text-steel-600">{f.a}</p>
+              <p className="max-w-[65ch] pb-6 leading-relaxed text-steel-600"><PhoneText text={f.a} /></p>
             </details>
           ))}
         </div>

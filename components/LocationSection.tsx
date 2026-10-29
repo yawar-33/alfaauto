@@ -12,7 +12,7 @@ export default function LocationSection() {
           <p className="eyebrow">Our location</p>
           <h2 id="loc-heading" className="h-section mt-3">Your Local Mechanic in Oakleigh South</h2>
           <address className="mt-8 grid gap-5 not-italic">
-            <p className="flex gap-3"><MapPin aria-hidden className="mt-0.5 size-5 shrink-0 text-gold-600" /><span><b className="block">{BIZ.name}</b>{BIZ.street}, {BIZ.suburb} {BIZ.state} {BIZ.postcode}</span></p>
+            <p className="flex gap-3"><MapPin aria-hidden className="mt-0.5 size-5 shrink-0 text-gold-600" /><span><b className="block">{BIZ.name}</b>{" "}{BIZ.street}, {BIZ.suburb} {BIZ.state} {BIZ.postcode}</span></p>
             <p className="flex gap-3"><Phone aria-hidden className="mt-0.5 size-5 shrink-0 text-gold-600" /><a href={`tel:${BIZ.tel}`} className="text-lg font-extrabold tabular-nums hover:text-gold-600">{BIZ.phone}</a></p>
             <div className="flex gap-3">
               <Clock aria-hidden className="mt-0.5 size-5 shrink-0 text-gold-600" />

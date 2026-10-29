@@ -7,6 +7,7 @@ import CTASection from "@/components/CTASection";
 import FaqSection from "@/components/FaqSection";
 import JsonLd from "@/components/JsonLd";
 import PageHero from "@/components/PageHero";
+import PhoneText from "@/components/PhoneText";
 import RoadworthySection from "@/components/RoadworthySection";
 import { breadcrumbSchema, faqSchema, serviceSchema } from "@/lib/schema";
 import { SERVICE_PAGES, getServicePage } from "@/lib/services";
@@ -17,11 +18,11 @@ export const generateStaticParams = () => SERVICE_PAGES.map((s) => ({ slug: s.sl
 
 type Props = { params: Promise<{ slug: string }> };
 
-// Turns inline [label](/path) links in section paragraphs into internal links.
+// Turns inline [label](/path) links in section paragraphs into internal links, and the phone number into a tel: link.
 const withLinks = (text: string) =>
   text.split(/(\[[^\]]+\]\([^)]+\))/).map((part, i) => {
     const m = part.match(/^\[([^\]]+)\]\(([^)]+)\)$/);
-    return m ? <Link key={i} href={m[2]} className="font-semibold text-ink-900 underline decoration-gold-500 decoration-2 underline-offset-4 hover:text-gold-600">{m[1]}</Link> : part;
+    return m ? <Link key={i} href={m[2]} className="font-semibold text-ink-900 underline decoration-gold-500 decoration-2 underline-offset-4 hover:text-gold-600">{m[1]}</Link> : <PhoneText key={i} text={part} />;
   });
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
@@ -54,7 +55,7 @@ export default async function ServicePageRoute({ params }: Props) {
                 {sec.paragraphs?.map((p) => <p key={p} className="mt-4 max-w-[65ch] text-lg leading-relaxed text-steel-600">{withLinks(p)}</p>)}
                 {sec.bullets && (
                   <ul className="mt-6 grid gap-3 sm:grid-cols-2">
-                    {sec.bullets.map((b) => <li key={b} className="flex gap-3 font-semibold"><CircleCheck aria-hidden className="mt-0.5 size-5 shrink-0 text-gold-600" />{b}</li>)}
+                    {sec.bullets.map((b) => <li key={b} className="flex gap-3 font-semibold"><CircleCheck aria-hidden className="mt-0.5 size-5 shrink-0 text-gold-600" /><span><PhoneText text={b} /></span></li>)}
                   </ul>
                 )}
               </article>
